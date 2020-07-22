@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   },
   inputText: {
     flex: 1,
+    fontSize: 22,
   },
   addBtn: {
     color: "#4169E1",
