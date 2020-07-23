@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 
 export default function List() {
   const [isHovered, setHovered] = React.useState(false);
-  const [value, onChangeText] = React.useState('Useless Placeholder');
 
   return (
     <View style={styles.container}>
@@ -15,14 +14,13 @@ export default function List() {
       >
         listitem
       </Text>
-      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "pink",
