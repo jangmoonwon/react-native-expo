@@ -1,83 +1,39 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
-import { StatusBar } from "expo-status-bar";
-import Header from "./components/Header";
-import List from "./components/List";
-import Button from "./components/Button";
-import TextInput from "./components/TextInput";
-
-const DATA = [
-  {
-    id: "tester_1",
-    title: "Item_1",
-  },
-  {
-    id: "tester_2",
-    title: "Item_2",
-  },
-  {
-    id: "tester_3",
-    title: "Item_3",
-  },
-];
-
-const Item = ({ item, onPress, style }) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, style]}>
-    <Text style={styles.title}>{item.title}</Text>
-  </TouchableOpacity>
-);
+import React from "react";
+import { SafeAreaView, StyleSheet, View, Text } from "react-native";
+import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
 
 export default function App() {
-  const [selectedId, setSelectedId] = useState(null);
-
-  const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
-    const color = item.title === selectedId ? "red" : "#fff";
-
-    return (
-      <Item
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-        style={{ backgroundColor, color }}
-      />
-    );
-  };
-
   return (
-    <View style={styles.container}>
-      <Header />
-      <List />
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
-      <Button />
-      <TextInput />
-      <StatusBar style={{ color: "black" }} />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.appTitle}>Todolist</Text>
+      <View style={styles.cardContainer}>
+        <TodoList />
+        <TodoInput />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#eeecda",
+    backgroundColor: "#faf4f4",
   },
-  item: {
-    backgroundColor: "#f9c2ff",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+  appTitle: {
+    color: "#ff7272",
+    fontSize: 40,
+    marginTop: 10,
+    marginBottom: 30,
+    fontWeight: "300",
+    textAlign: "center",
+    backgroundColor: "#faf4f4",
   },
-  title: {
-    fontSize: 32,
-    color: "black",
+  cardContainer: {
+    backgroundColor: "#fff",
+    flex: 1,
+    borderRadius: 10,
+    marginLeft: 10,
+    marginRight: 10,
   },
 });

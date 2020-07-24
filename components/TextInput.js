@@ -13,7 +13,6 @@ function UseTextInput() {
         <TextInput
           style={styles.inputText}
           placeholder={"input your task"}
-          autoCompleteType={off}
         />
       </View>
     </KeyboardAvoidingView>
