@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   StyleSheet,
   View,
@@ -8,7 +8,18 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function TodoInput() {
+export default function TodoInsert({onAddTodo}) {
+  const [newTodoItem, setNewTodoItem] = useState('');
+
+  const todoInputHandler = newTodo => {
+    setNewTodoItem(newTodo);
+  };
+  
+  const addTodoHandler = () => {
+    onAddTodo(newTodoItem);
+    setNewTodoItem('');
+  };
+
   return (
     <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={120}>
       <View style={styles.container}>
@@ -18,9 +29,11 @@ export default function TodoInput() {
             placeholder="Enter new todo"
             placeholderTextColor="#bbb"
             autoCorrect={false}
+            onChangeText={todoInputHandler}
+            value={newTodoItem}
           />
           <TouchableOpacity>
-            <AntDesign name="plus" size={28} color="#ff7272" />
+            <AntDesign name="plus" size={28} color="#ff7272" onPress={addTodoHandler} />
           </TouchableOpacity>
         </View>
       </View>
