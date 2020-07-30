@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -8,16 +8,16 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function TodoInsert({onAddTodo}) {
-  const [newTodoItem, setNewTodoItem] = useState('');
+export default function TodoInsert({ onAddTodo }) {
+  const [newTodoItem, setNewTodoItem] = useState("");
 
-  const todoInputHandler = newTodo => {
+  const todoInputHandler = (newTodo) => {
     setNewTodoItem(newTodo);
   };
-  
+
   const addTodoHandler = () => {
     onAddTodo(newTodoItem);
-    setNewTodoItem('');
+    setNewTodoItem("");
   };
 
   return (
@@ -30,10 +30,17 @@ export default function TodoInsert({onAddTodo}) {
             placeholderTextColor="#bbb"
             autoCorrect={false}
             onChangeText={todoInputHandler}
+            onSubmitEditing={addTodoHandler}
+            returnKeyType="done"
             value={newTodoItem}
           />
           <TouchableOpacity>
-            <AntDesign name="plus" size={28} color="#ff7272" onPress={addTodoHandler} />
+            <AntDesign
+              name="upcircleo"
+              size={28}
+              color="#ff7272"
+              onPress={addTodoHandler}
+            />
           </TouchableOpacity>
         </View>
       </View>
